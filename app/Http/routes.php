@@ -19,7 +19,7 @@
 
 // HOMEPAGE ROUTE
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
 
 Route::get('/twitter', function()
@@ -35,7 +35,21 @@ Route::get('/twitter', function()
 
 });
 
+Route::get('/home', [
+    'uses' 		=> 'IndexController@index'
+]);
 
+Route::get('/service', [
+    'uses' 		=> 'ServiceController@index'
+]);
+
+Route::get('/organization', [
+    'uses' 		=> 'OrganizationController@index'
+]);
+
+Route::get('/taxonomy', [
+    'uses' 		=> 'TaxonomyController@index'
+]);
 
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS
 Route::controllers([
@@ -57,10 +71,7 @@ Route::get('restart', function () {
     \Auth::logout();
     return redirect('auth/register')->with('anError',  \Lang::get('auth.loggedOutLocked'));
 });
-Route::get('another', function () {
-    \Auth::logout();
-    return redirect('auth/login')->with('anError',  \Lang::get('auth.tryAnother'));
-});
+
 
 // LARAVEL SOCIALITE AUTHENTICATION ROUTES
 Route::get('/social/redirect/{provider}', [
@@ -88,9 +99,7 @@ Route::get('reset', function () {
 Route::get('admin', function () {
     return redirect('/dashboard');
 });
-Route::get('home', function () {
-    return redirect('/dashboard');
-});
+
 
 // USER PAGE ROUTES - RUNNING THROUGH AUTH MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
