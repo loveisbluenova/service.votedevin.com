@@ -4,7 +4,7 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li class="active"><a href="/home"><i class="fa fa-home">
+                    <li><a href="/home"><i class="fa fa-home">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Home</span></a></li>
                      <li><a href="/service"><i class="fa fa-gift fa-fw">
