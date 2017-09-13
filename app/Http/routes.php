@@ -160,6 +160,17 @@ Route::group(['middleware' => 'administrator'], function () {
 	    echo 'Welcome to your ADMINISTRATOR page '. Auth::user()->email .'.';
 	});
 
+	// Home Edit
+	Route::get('/home_edit', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'HomeeditController@index'
+	]);
+
+		// upload image route for MediumInsert plugin
+	Route::any('upload', 'PostsController@upload');
+	// resource routes for posts
+	Route::resource('posts', 'PostsController');
+
 });
 
 // EDITOR ACCESS LEVEL PAGE ROUTES - RUNNING THROUGH EDITOR MIDDLEWARE
