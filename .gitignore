@@ -34,7 +34,6 @@ composer.lock
 ### ASSET EXCLUSIONS ###
 /ref
 uploads
-vendor
 node_modules
 Homestead.yaml
 Homestead.json
