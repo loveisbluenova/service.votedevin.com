@@ -18,9 +18,9 @@
 */
 
 // HOMEPAGE ROUTE
-Route::get('/', function () {
-    return view('frontend.home');
-});
+Route::get('/', [
+    'uses' 		=> 'IndexController@index'
+]);
 
 Route::get('/twitter', function()
 {
@@ -163,7 +163,7 @@ Route::group(['middleware' => 'administrator'], function () {
 	// Home Edit
 	Route::get('/home_edit', [
 		'as' 			=> '{username}',
-		'uses' 			=> 'HomeeditController@index'
+		'uses' 			=> 'PostsController@index'
 	]);
 
 		// upload image route for MediumInsert plugin

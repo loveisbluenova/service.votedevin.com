@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Logic\User\UserRepository;
+use App\Models\Post;
 
 class IndexController extends Controller
 {
@@ -13,9 +19,17 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     public function index()
     {
-        return view('frontend.home');
+        $posts = $this->post->first();
+        return view('frontend.home', compact('posts'));
     }
 
     /**

@@ -3,8 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Logic\User\UserRepository;
+use App\Models\Post;
+use Validator;
+use Input;
+use Response;
 
 class PostsController extends Controller
 {
@@ -27,9 +35,34 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = $this->post->all();
+        $user                   = \Auth::user();
+        $users              = \DB::table('users')->get();
+        $total_users        = \DB::table('users')->count();
+        $userRole           = $user->hasRole('user');
+        $editorRole         = $user->hasRole('editor');
+        $adminRole          = $user->hasRole('administrator');
 
-        return View::make('posts.index', compact('posts'));
+        $userRole               = $user->hasRole('user');
+        $editorRole             = $user->hasRole('editor');
+        $adminRole              = $user->hasRole('administrator');
+
+        if($userRole)
+        {
+            $access = 'User';
+        } elseif ($editorRole) {
+            $access = 'Editor';
+        } elseif ($adminRole) {
+            $access = 'Administrator';
+        }
+
+             return view('admin.pages.edit-home', [
+            'users'             => $users,
+            'total_users'       => $total_users,
+            'user'              => $user,
+            'access'            => $access,
+            'success' => '', 
+            'errors' => '', 
+            'message' => '',]);
     }
 
     /**
@@ -39,7 +72,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return View::make('posts.create');
+        return view('admin.posts.create');
     }
 
     /**
@@ -49,15 +82,53 @@ class PostsController extends Controller
      */
     public function store()
     {
+    	$user               = \Auth::user();
+        $users              = \DB::table('users')->get();
+        $total_users        = \DB::table('users')->count();
+        $userRole           = $user->hasRole('user');
+        $editorRole         = $user->hasRole('editor');
+        $adminRole          = $user->hasRole('administrator');
+
+        $userRole               = $user->hasRole('user');
+        $editorRole             = $user->hasRole('editor');
+        $adminRole              = $user->hasRole('administrator');
+
+        if($userRole)
+        {
+            $access = 'User';
+        } elseif ($editorRole) {
+            $access = 'Editor';
+        } elseif ($adminRole) {
+            $access = 'Administrator';
+        }
+
         $input = Input::all();
         $validation = Validator::make($input, Post::$rules);
 
         if ($validation->passes())
-        {
-            $this->post->create($input);
-            return Response::json(array('success' => true, 'errors' => '', 'message' => 'Post created successfully.'));
+        {	
+        	$post = $this->post->first();
+            $post->update($input);
+            //$this->post->create($input);
+
+            return view('admin.pages.edit-home', [
+	            'users'             => $users,
+	            'total_users'       => $total_users,
+	            'user'              => $user,
+	            'access'            => $access,
+	            'success' 			=> 'true', 
+	            'errors' 			=> '', 
+	            'message' 			=> 'Post created successfully.',]);
         }
-        return Response::json(array('success' => false, 'errors' => $validation, 'message' => 'All fields are required.'));
+
+        return view('admin.pages.edit-home', [
+	            'users'             => $users,
+	            'total_users'       => $total_users,
+	            'user'              => $user,
+	            'access'            => $access,
+	            'success' => 'false', 
+	            'errors' => $validation, 
+	            'message' => 'All fields are required.',]);
     }
 
     /**
@@ -70,7 +141,7 @@ class PostsController extends Controller
     {
         $post = $this->post->findOrFail($id);
 
-        return View::make('posts.show', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -88,7 +159,7 @@ class PostsController extends Controller
             return Redirect::route('posts.index');
         }
 
-        return View::make('posts.edit', compact('post'));
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -99,6 +170,7 @@ class PostsController extends Controller
      */
     public function update($id)
     {
+    	$id = 1;
         $input = array_except(Input::all(), '_method');
         $validation = Validator::make($input, Post::$rules);
 
@@ -123,7 +195,7 @@ class PostsController extends Controller
     {
         $this->post->find($id)->delete();
 
-        return Redirect::route('posts.index');
+        return Redirect::route('admin.posts.index');
     }
 
     public function upload()

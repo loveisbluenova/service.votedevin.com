@@ -39,6 +39,7 @@ Homestead.yaml
 Homestead.json
 bower_components/*
 node_modules/*
+vendor
 
 ## IGNORE FOR NOW DUE TO GITHUB CONFLICTS
 README.md

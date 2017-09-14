@@ -15,6 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/AdminLTE.min.css">
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -26,7 +27,20 @@
     </section>
     <section class="content">
         <div class="row">
+
             <div class="col-md-12">
+                @if($success == 'true')
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size: 2em;">×</button>
+                        {{$message}}                
+                    </div>
+                @endif
+                @if($success == 'false')
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="font-size: 2em;">×</button>
+                        {{$message}}                
+                    </div>
+                @endif
                 {{ Form::open(array('route' => 'posts.store')) }}
                     {{ csrf_field() }}
                     <div class="box-body">
@@ -41,7 +55,7 @@
                         {{Form::close()}}
                         <script>
                             $('#summernote').summernote({
-                                placeholder: 'Hello bootstrap 4',
+                                placeholder: 'Content',
                                 tabsize: 2,
                                 height: 300
                             });
@@ -57,6 +71,5 @@
 
 @section('template_scripts') 
 
-    @include('admin.structure.dashboard-scripts')  
 
 @endsection

@@ -32,7 +32,7 @@
             </li>
 
             <li>
-              <a href="/home_edit">
+              <a href="/posts">
                 <i class="fa fa-pencil"></i> <span>Home Edit</span>
               </a>
             </li>
