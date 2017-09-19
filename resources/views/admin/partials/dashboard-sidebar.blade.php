@@ -37,8 +37,8 @@
               </a>
             </li>
             <li>
-              <a href="/pages/datasync">
-                <i class="fa fa-th"></i> <span>Data Sync</span>
+              <a href="/datasync">
+                <i class="fa fa-database"></i> <span>Data Sync</span>
               </a>
             </li>
             @if (Auth::user()->profile)

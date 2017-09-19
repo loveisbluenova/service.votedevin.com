@@ -35,20 +35,17 @@ Route::get('/twitter', function()
 
 });
 
-Route::get('/home', [
-    'uses' 		=> 'IndexController@index'
-]);
 
 Route::get('/service', [
-    'uses' 		=> 'ServiceController@index'
+    'uses' 		=> 'ServiceController@all'
 ]);
 
 Route::get('/organization', [
-    'uses' 		=> 'OrganizationController@index'
+    'uses' 		=> 'OrganizationController@all'
 ]);
 
 Route::get('/taxonomy', [
-    'uses' 		=> 'TaxonomyController@index'
+    'uses' 		=> 'TaxonomyController@all'
 ]);
 
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS
@@ -65,6 +62,16 @@ Route::get('/activate/{code}', [
     'as' 		=> 'user',
 	'uses'		=> 'Auth\AuthController@activateAccount'
 ]);
+
+Route::get('/service_all', 'ServiceController@all');
+Route::get('/service_{id}', 'ServiceController@find');
+
+Route::get('/organization_all', 'OrganizationController@all');
+Route::get('/organization_{id}', 'OrganizationController@find');
+
+Route::get('/location_all', 'LocationController@all');
+Route::get('/location_{id}', 'LocationController@find');
+
 
 // CUSTOM REDIRECTS
 Route::get('restart', function () {
@@ -99,7 +106,7 @@ Route::get('reset', function () {
 Route::get('admin', function () {
     return redirect('/dashboard');
 });
-
+Route::get('home',['uses'=>'IndexController@index']);
 
 // USER PAGE ROUTES - RUNNING THROUGH AUTH MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
@@ -164,6 +171,11 @@ Route::group(['middleware' => 'administrator'], function () {
 	Route::get('/home_edit', [
 		'as' 			=> '{username}',
 		'uses' 			=> 'PostsController@index'
+	]);
+
+	Route::get('/datasync', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'UserController@datasync'
 	]);
 
 		// upload image route for MediumInsert plugin

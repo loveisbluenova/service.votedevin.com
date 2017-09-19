@@ -49,24 +49,25 @@
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-lg-7" style="padding-right: 0;">
-                                    <div class="panel">
+                                    <div class="panel" style="padding-top: 20px;">
                                         <div class="panel-body">
-                                            <h4>alternate_name</h4>
-                                            <h4>organization>name (links)</h4>
-                                            <h4>description</h4>
-                                            <h4>status</h4>
-                                            <h4>service_taxonomy</h4>
-                                            <h4>url</h4>
-                                            <h4>email</h4>
-                                            <h4>{program}</h4>
-                                            <br>
-                                            <br>
-                                            <h2 style="font-size: 30px;">Additional Info</h2>
-                                            <h4>application_process</h4>
-                                            <h4>wait_time</h4>
-                                            <h4>fees</h4>
-                                            <h4>accreditations</h4>
-                                            <h4>licenses</h4>
+                                            <p style="font-size: 25px;color: #357ca5;">{{$service->name}}</p>
+                                            <p><code> Alternate Name:</code>{{$service->alternate_name}}</p>
+                                            <p><code> Organization Name:</code><a href="/organization_{{$service->organization}}" style="color: #428bca;">{{$organization}}</a></p>
+                                            <p><code> Description:</code>{{$service->description}}</p>
+                                            <p><code> Status:</code><span class="badge badge-green">{{$service->status}}</span></p>
+                                            <p><code> Taxonomy:</code>{{$service->taxonomy}}</p>
+                                            <p><code> Url:</code>{{$service->url}}</p>
+                                            <p><code> Email:</code>{{$service->email}}</p>
+                                            <p><code> Program:</code>{{$service->program}}</p>
+                                            <div class="divider">
+                                                <h2>Additional Info</h2>
+                                                <p><code> Application Process:</code>{{$service->application_process}}</p>
+                                                <p><code> Wait Time:</code>{{$service->wait_time}}</p>
+                                                <p><code> Fees:</code>{{$service->fees}}</p>
+                                                <p><code> Accreditations:</code>{{$service->accreditations}}</p>
+                                                <p><code> Licenses:</code>{{$service->licenses}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -82,12 +83,12 @@
                                                  </div><!-- /.map -->
                                         </div>
                                         <div class="portlet-body">
-                                            <h4>{location>address}</h4>
-                                            <h4>{contacts}</h4>
-                                            <h4>{regular_schedule}</h4>
-                                            <h4>{holiday_schedule}</h4>
-                                            <h2 style="font-size: 30px;">Details</h2>
-                                            <h4>Detail type - description</h4>
+                                            <p>{location>address}</p>
+                                            <p>{contacts}</p>
+                                            <p>{regular_schedule}</p>
+                                            <p>{holiday_schedule}</p>
+                                            <p style="font-size: 30px;">Details</p>
+                                            <p>Detail type - description</p>
                                         </div>
                                     </div>
                                 </div>

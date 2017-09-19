@@ -36,9 +36,23 @@ class UserController extends Controller
         return view('admin.pages.user-home')->withUser($user)->withAccess($access);
     }
 
-    public function getHome()
+    public function datasync()
     {
-        return view('admin.pages.user-home');
+        $user           = \Auth::user();
+        $userRole       = $user->hasRole('user');
+        $editorRole     = $user->hasRole('editor');
+        $adminRole      = $user->hasRole('administrator');
+
+        if($userRole)
+        {
+            $access = 'User';
+        } elseif ($editorRole) {
+            $access = 'Editor';
+        } elseif ($adminRole) {
+            $access = 'Administrator';
+        }
+
+        return view('admin.pages.datasync')->withUser($user)->withAccess($access);
     }
 
 //OLD LTE

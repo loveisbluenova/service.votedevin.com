@@ -2,12 +2,11 @@
 <title>Index | Index</title>
 
 <div>
-
     <!--BEGIN BACK TO TOP-->
     <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
     <!--END BACK TO TOP-->
     <!--BEGIN TOPBAR-->
-     @include('layouts.header')
+    @include('layouts.header')
     <!--END TOPBAR-->
     <div id="wrapper">
         <!--BEGIN SIDEBAR MENU-->
@@ -21,9 +20,8 @@
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
                     <div class="page-title">
-                        taxonomy_detail</div>
+                        Home</div>
                 </div>
-                <div class="sharethis-inline-share-buttons col-md-4"></div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                     <li class="hidden"><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
@@ -48,48 +46,97 @@
 
                         <div class="page-content">
                             <div class="row">
-                                <div class="col-lg-7" style="padding-right: 0;">
+                                <div class="col-lg-12">
                                     <div class="panel">
                                         <div class="panel-body">
-                                            <h4>service>name</h4>
-                                            <h4>service>organization</h4>
-                                            <h4>service>service_taxomy</h4>
-                                            <h4>service>phone</h4>
-                                            <h4>service>description</h4>
-                                        </div>
-                                    </div>
-                                    <div class="panel">
-                                        <div class="panel-body">
-                                            <h4>service>name</h4>
-                                            <h4>service>organization</h4>
-                                            <h4>service>service_taxomy</h4>
-                                            <h4>service>phone</h4>
-                                            <h4>service>description</h4>
-                                        </div>
-                                    </div>
-                                    <div class="panel">
-                                        <div class="panel-body">
-                                            <h4>service>name</h4>
-                                            <h4>service>organization</h4>
-                                            <h4>service>service_taxomy</h4>
-                                            <h4>service>phone</h4>
-                                            <h4>service>description</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5" style="padding-left: 0;">
-                                    <div class="portlet box">
-                                        <div class="portlet-header">
-                                                 <div class="map">
-                                                  <div class="container-fluid" style="padding: 0;">
-                                                   <div class="row col-md-2">
-                                                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.130369917133!2d36.80390184826668!3d-1.3157805385798884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1053bc7118e7%3A0xb365376f1d28175!2sNairobi+West%2C+Nairobi!5e0!3m2!1sen!2ske!4v1463256840401" width="460" height="250" style="border:0" allowfullscreen></iframe>
-                                                   </div><!-- /.row -->
-                                                  </div><!-- /.container-fluid -->
-                                                 </div><!-- /.map -->
-                                        </div>
-                                        <div class="portlet-body">
-                                            <h4>{location>address}</h4>
+                                            <div id="grid-layout-table-1" class="box jplist">
+                                                <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+                                                <div class="jplist-panel box panel-top">
+                                                    <button type="button" data-control-type="reset" data-control-name="reset" data-control-action="reset" class="jplist-reset-btn btn btn-default">Reset<i class="fa fa-share mls"></i></button>
+                                                    <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" class="jplist-drop-down form-control">
+                                                        <ul class="dropdown-menu">
+                                                            <li><span data-number="3"> 3 per page</span></li>
+                                                            <li><span data-number="5"> 5 per page</span></li>
+                                                            <li><span data-number="10" data-default="true"> 10 per page</span></li>
+                                                            <li><span data-number="all"> view all</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
+                                                        <ul class="dropdown-menu">
+                                                            <li><span data-path="default">Sort by</span></li>
+                                                            <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+                                                            <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+                                                            <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+                                                            <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+                                                            <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+                                                            <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+                                                            <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+                                                            <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
+                                                    <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" class="jplist-pagination"></div>
+                                                </div>
+                                                
+                                                <div class="box text-shadow">
+                                                    <table class="demo-tbl">
+                                                        <!--<item>1</item>-->
+                                                        @foreach($services as $service)
+                                                        <tr class="tbl-item">
+                                                            
+                                                            <!--<data></data>-->
+                                                            <td class="td-block">
+
+                                                                <p class="title" style="font-size: 25px;"><a href="/service_{{$service->service_id}}" style="color: #357ca5;">{{$service->name}}</a></p>
+
+                                                                <p class="desc" style="font-size: 16px;"><a href="#" style="color: #00aff0;">service->organization</a></p>
+
+                                                                <div class="option" style="padding-left: 10px;padding-top: 5px;">
+
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>service->taxonomy</p>
+
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>service->phone</p>
+
+                                                                    <p class="desc" style="font-size: 16px;">service->description</p>
+                                                                </div>
+                                                            </td>
+                                                            <!--<img/>-->
+                                                            <td class="td-block"><img src="images/thumbs/arch-1.jpg" alt="" title="" /></td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </table>
+                                                </div>
+                                                
+                                                <div class="box jplist-no-results text-shadow align-center">
+                                                    <p>No results found</p>
+                                                </div>
+                                                <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
+                                                <div class="jplist-panel box panel-bottom">
+                                                    <div data-control-type="drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-drop-down form-control">
+                                                        <ul class="dropdown-menu">
+                                                            <li><span data-number="3"> 3 per page</span></li>
+                                                            <li><span data-number="5"> 5 per page</span></li>
+                                                            <li><span data-number="10" data-default="true"> 10 per page</span></li>
+                                                            <li><span data-number="all"> view all</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div data-control-type="drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}" class="jplist-drop-down form-control">
+                                                        <ul class="dropdown-menu">
+                                                            <li><span data-path="default">Sort by</span></li>
+                                                            <li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+                                                            <li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+                                                            <li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+                                                            <li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+                                                            <li><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+                                                            <li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+                                                            <li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+                                                            <li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging" class="jplist-label btn btn-default"></div>
+                                                    <div data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true" class="jplist-pagination"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,23 +150,12 @@
             <!--BEGIN FOOTER-->
             <div id="footer">
                 <div class="copyright">
-                <a href="#">&copy; ThemesGround 2015. Designed by ThemesGround </a></div>
+                    <a href="#">&copy; ThemesGround 2015. Designed by ThemesGround </a></div>
             </div>
             <!--END FOOTER-->
         </div>
         <!--END CONTENT-->
-
-</div>
-<!--END PAGE WRAPPER-->
-</div>
+    </div>
+    <!--END PAGE WRAPPER-->
 </div>
 @include('layouts.script')
-<script>
-function myMap() {
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-  };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-}
-</script>

@@ -49,12 +49,12 @@ html {
 }
 body {
   font-family: 'Open Sans',sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.42857143;
   color: #777;
   background-color: #647997;
   height: 100%;
-  padding:0px 50px;
+  padding:0px 0px;
   
 }
 input,
@@ -7496,7 +7496,7 @@ input {
   padding: 0;
 }
 
-.td-block:hover, .td-block:focus{
+.tbl-item:hover, .tbl-item:focus{
     border-radius: 3px !important;
     border: 1px solid #e5e5e5;
     border: 1px solid #c4c9d8;
@@ -7504,4 +7504,53 @@ input {
     background-color: #f5f7fa;
     outline: none;
     cursor: pointer;
+}
+
+code {
+    padding: 2px 6px;
+    font-size: 100%;
+    font-weight: bold;
+    color: #333333;
+    background-color: #e6e6e6;
+    white-space: nowrap;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.scrollable-menu{
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
+.dropdown-menu li a {
+  color:#555;
+  padding: 2px 20px;
+  font-size: 14px;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #f8763c;
+}
+.input-icon.right input {
+  border-radius: 3px !important;
+}
+
+label{
+  color: #333333;
+}
+
+p{
+  color: #222222;
+  font-size: 18px;
+}
+
+.btn-default {
+  text-transform: none;
 }

@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Logic\User\UserRepository;
 use App\Models\Post;
+use App\Models\Taxonomy;
+use App\Models\Service;
+use App\Models\Location;
+use App\Models\Organization;
 
 class IndexController extends Controller
 {
@@ -28,19 +32,23 @@ class IndexController extends Controller
 
     public function index()
     {
+        $services = Service::all();
+        $locations = Location::all();
+        $taxonomys = Taxonomy::all();
+        $organizations = Organization::all();
+        $taxonomies = Taxonomy::where('parent_name', '=', '')->get();
+        $allTaxonomies = Taxonomy::pluck('name','taxonomy_id')->all();
+        // return $tree;
+        //return view('files.treeview',compact('tree'));
         $posts = $this->post->first();
-        return view('frontend.home', compact('posts'));
+        $service_name = '&nbsp;';
+        $location_name = '&nbsp;';
+        $organization_name = '&nbsp;';
+        $service_type_name = '&nbsp;';
+        $filter = collect([$service_type_name, $location_name, $organization_name, $service_name]);
+        return view('frontend.home', compact('posts','taxonomies','allTaxonomies','services','locations','organizations', 'taxonomys','filter'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
