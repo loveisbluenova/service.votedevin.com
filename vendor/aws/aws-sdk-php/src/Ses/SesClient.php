@@ -1,6 +1,9 @@
 <?php
 namespace Aws\Ses;
 
+use Aws\Api\ApiProvider;
+use Aws\Api\DocModel;
+use Aws\Api\Service;
 use Aws\Credentials\CredentialsInterface;
 
 /**
@@ -8,12 +11,24 @@ use Aws\Credentials\CredentialsInterface;
  *
  * @method \Aws\Result cloneReceiptRuleSet(array $args = [])
  * @method \GuzzleHttp\Promise\Promise cloneReceiptRuleSetAsync(array $args = [])
+ * @method \Aws\Result createConfigurationSet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createConfigurationSetAsync(array $args = [])
+ * @method \Aws\Result createConfigurationSetEventDestination(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createConfigurationSetEventDestinationAsync(array $args = [])
+ * @method \Aws\Result createConfigurationSetTrackingOptions(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise createConfigurationSetTrackingOptionsAsync(array $args = [])
  * @method \Aws\Result createReceiptFilter(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createReceiptFilterAsync(array $args = [])
  * @method \Aws\Result createReceiptRule(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createReceiptRuleAsync(array $args = [])
  * @method \Aws\Result createReceiptRuleSet(array $args = [])
  * @method \GuzzleHttp\Promise\Promise createReceiptRuleSetAsync(array $args = [])
+ * @method \Aws\Result deleteConfigurationSet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteConfigurationSetAsync(array $args = [])
+ * @method \Aws\Result deleteConfigurationSetEventDestination(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteConfigurationSetEventDestinationAsync(array $args = [])
+ * @method \Aws\Result deleteConfigurationSetTrackingOptions(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteConfigurationSetTrackingOptionsAsync(array $args = [])
  * @method \Aws\Result deleteIdentity(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteIdentityAsync(array $args = [])
  * @method \Aws\Result deleteIdentityPolicy(array $args = [])
@@ -28,6 +43,8 @@ use Aws\Credentials\CredentialsInterface;
  * @method \GuzzleHttp\Promise\Promise deleteVerifiedEmailAddressAsync(array $args = [])
  * @method \Aws\Result describeActiveReceiptRuleSet(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeActiveReceiptRuleSetAsync(array $args = [])
+ * @method \Aws\Result describeConfigurationSet(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeConfigurationSetAsync(array $args = [])
  * @method \Aws\Result describeReceiptRule(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeReceiptRuleAsync(array $args = [])
  * @method \Aws\Result describeReceiptRuleSet(array $args = [])
@@ -46,6 +63,8 @@ use Aws\Credentials\CredentialsInterface;
  * @method \GuzzleHttp\Promise\Promise getSendQuotaAsync(array $args = [])
  * @method \Aws\Result getSendStatistics(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getSendStatisticsAsync(array $args = [])
+ * @method \Aws\Result listConfigurationSets(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise listConfigurationSetsAsync(array $args = [])
  * @method \Aws\Result listIdentities(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listIdentitiesAsync(array $args = [])
  * @method \Aws\Result listIdentityPolicies(array $args = [])
@@ -80,6 +99,10 @@ use Aws\Credentials\CredentialsInterface;
  * @method \GuzzleHttp\Promise\Promise setIdentityNotificationTopicAsync(array $args = [])
  * @method \Aws\Result setReceiptRulePosition(array $args = [])
  * @method \GuzzleHttp\Promise\Promise setReceiptRulePositionAsync(array $args = [])
+ * @method \Aws\Result updateConfigurationSetEventDestination(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateConfigurationSetEventDestinationAsync(array $args = [])
+ * @method \Aws\Result updateConfigurationSetTrackingOptions(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateConfigurationSetTrackingOptionsAsync(array $args = [])
  * @method \Aws\Result updateReceiptRule(array $args = [])
  * @method \GuzzleHttp\Promise\Promise updateReceiptRuleAsync(array $args = [])
  * @method \Aws\Result verifyDomainDkim(array $args = [])
@@ -112,5 +135,21 @@ class SesClient extends \Aws\AwsClient
         $signature = hash_hmac($algo, $message, $creds->getSecretKey(), true);
 
         return base64_encode($version . $signature);
+    }
+
+    /**
+     * @internal
+     * @codeCoverageIgnore
+     */
+    public static function applyDocFilters(array $api, array $docs)
+    {
+        $b64 = '<div class="alert alert-info">This value will be base64 encoded on your behalf.</div>';
+
+        $docs['shapes']['RawMessage']['append'] = $b64;
+
+        return [
+            new Service($api, ApiProvider::defaultProvider()),
+            new DocModel($docs)
+        ];
     }
 }

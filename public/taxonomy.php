@@ -37,7 +37,7 @@
 						} 
 						echo "Connected successfully. ";
 
-						$sql = "TRUNCATE TABLE taxonomy;";
+						$sql = "TRUNCATE TABLE taxonomies;";
 
 						if ($conn->query($sql) === TRUE) {
 						    echo "New record created successfully";
@@ -151,7 +151,7 @@
 								$parent_name = implode(",", $record['fields']['parent_name']);
 								$services = implode(",", $record['fields']['services']);
 
-								$sql = "INSERT INTO taxonomy (taxonomy_id, name, parent_name, services, vocabulary)
+								$sql = "INSERT INTO taxonomies (taxonomy_id, name, parent_name, services, vocabulary)
 								VALUES ( '{$record['id']}', '{$name}', '{$parent_name}', '{$services}', '{$record['fields']['vocabulary']}');";
 
 								if ($conn->query($sql) === TRUE) {

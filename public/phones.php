@@ -144,18 +144,19 @@
 								// Note that we're passing the Airtable-assigned record ID.
 								echo '<li>';
 								echo '<a href="artist.php?id=' . $record['id'] . '">';
-								echo $record['fields']['name'] . '</a>';
+								echo $record['fields']['number'] . '</a>';
 								echo '</li>';
 
 								//$phone_number = implode(",", $record['fields']['number']);
 								$locations = implode(",", $record['fields']['locations']);
 								$services = implode(",", $record['fields']['services']);
 								$organizations = implode(",", $record['fields']['organizations']);
+								$contacts = implode(",", $record['fields']['contacts']);
 								$language = implode(",", $record['fields']['language']);
-								$description = implode(",", $record['fields']['description']);
+								$description = str_replace("'","\'",$record['fields']['description']);
 
 								$sql = "INSERT INTO phones (phone_id, phone_number, locations, services, organizations, contacts, service_at_location_id, extension, type, language, description)
-								VALUES ( '{$record['id']}', '{$record['fields']['number']}', '{$locations}', '{$services}', '{$organizations}', '{$record['fields']['contacts']}', '{$record['fields']['service_at_location_id']}', '{$record['fields']['extension']}', '{$record['fields']['type']}', '{$language}', '{$description}');";
+								VALUES ( '{$record['id']}', '{$record['fields']['number']}', '{$locations}', '{$services}', '{$organizations}', '{$contacts}', '{$record['fields']['service_at_location_id']}', '{$record['fields']['extension']}', '{$record['fields']['type']}', '{$language}', '{$description}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

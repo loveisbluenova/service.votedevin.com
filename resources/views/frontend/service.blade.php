@@ -52,17 +52,26 @@
                                     <div class="panel" style="padding-top: 20px;">
                                         <div class="panel-body">
                                             <p style="font-size: 25px;color: #357ca5;">{{$service->name}}</p>
+
                                             <p><code> Alternate Name:</code>{{$service->alternate_name}}</p>
+
                                             <p><code> Organization Name:</code><a href="/organization_{{$service->organization}}" style="color: #428bca;">{{$organization}}</a></p>
-                                            <p><code> Description:</code>{{$service->description}}</p>
+
+                                            <p><code> Description:</code>{!! $service->description !!}</p>
+
                                             <p><code> Status:</code><span class="badge badge-green">{{$service->status}}</span></p>
-                                            <p><code> Taxonomy:</code>{{$service->taxonomy}}</p>
-                                            <p><code> Url:</code>{{$service->url}}</p>
+
+                                            <p><code> Taxonomy:</code>{{$taxonomy}}</p>
+
+                                            <p><code> Url:</code><a target="blank" href="{{$service->url}}">{{$service->url}}</a></p>
+
                                             <p><code> Email:</code>{{$service->email}}</p>
-                                            <p><code> Program:</code>{{$service->program}}</p>
+
+                                            <p><code> Program:</code>{{$program}}</p>
+
                                             <div class="divider">
                                                 <h2>Additional Info</h2>
-                                                <p><code> Application Process:</code>{{$service->application_process}}</p>
+                                                <p><code> Application Process:</code>{!! $service->application_process !!}</p>
                                                 <p><code> Wait Time:</code>{{$service->wait_time}}</p>
                                                 <p><code> Fees:</code>{{$service->fees}}</p>
                                                 <p><code> Accreditations:</code>{{$service->accreditations}}</p>
@@ -74,21 +83,24 @@
                                 <div class="col-lg-5" style="padding-left: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                                 <div class="map">
-                                                  <div class="container-fluid" style="padding: 0;">
-                                                   <div class="row col-md-2">
-                                                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.130369917133!2d36.80390184826668!3d-1.3157805385798884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1053bc7118e7%3A0xb365376f1d28175!2sNairobi+West%2C+Nairobi!5e0!3m2!1sen!2ske!4v1463256840401" width="460" height="250" style="border:0" allowfullscreen></iframe>
-                                                   </div><!-- /.row -->
-                                                  </div><!-- /.container-fluid -->
-                                                 </div><!-- /.map -->
+                                            @if ($service_map->latitude==0 && $service_map->longitude==0)
+                                              <p style="font-size: 16px; padding-right: 40px; padding-top: 60px;">There is no map data.</p>
+                                            @else
+                                            <div style="width: 100%; height: 300px;">
+
+                                              {!! Mapper::render() !!}
+                                            </div>
+                                            @endif
                                         </div>
                                         <div class="portlet-body">
-                                            <p>{location>address}</p>
-                                            <p>{contacts}</p>
-                                            <p>{regular_schedule}</p>
-                                            <p>{holiday_schedule}</p>
-                                            <p style="font-size: 30px;">Details</p>
-                                            <p>Detail type - description</p>
+                                            <p><code>Address:</code></p>
+                                            <p><code>Contact:</code>{{$contacts}}</p>
+                                            <p><code>Regular schedule:</code></p>
+                                            <p><code>holiday schedule:</code></p>
+                                            <h2>Details</h2>
+                                            @foreach($service_details as $service_detail)
+                                                <p><span class="badge badge-yellow">{{$service_detail->detail_type}}</span> {!! $service_detail->value !!}</p>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

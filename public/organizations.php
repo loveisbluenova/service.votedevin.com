@@ -153,9 +153,12 @@
 								$services = implode(",", $record['fields']['services']);
 								$phones = implode(",", $record['fields']['phones']);
 								$locations = implode(",", $record['fields']['locations']);
+								$contact = implode(",", $record['fields']['contact']);
+								$details = implode(",", $record['fields']['details']);
+								$program = implode(",", $record['fields']['program']);
 
 								$sql = "INSERT INTO organizations (organization_id, name, alternate_name, description, email, url, legal_status, tax_status, tax_id, year_incorporated, services, phones, locations, contact, details, program)
-								VALUES ( '{$record['id']}', '{$name}', '{$alternate_name}', '{$description}', '{$record['fields']['email']}', '{$record['fields']['url']}', '{$record['fields']['legal_status']}', '{$record['fields']['tax_status']}', '{$record['fields']['tax_id']}', '{$record['fields']['year_incorporated']}', '{$services}','{$phones}', '{$locations}', '{$record['fields']['contact']}', '{$record['fields']['details']}', '{$record['fields']['program']}');";
+								VALUES ( '{$record['id']}', '{$name}', '{$alternate_name}', '{$description}', '{$record['fields']['email']}', '{$record['fields']['url']}', '{$record['fields']['legal_status']}', '{$record['fields']['tax_status']}', '{$record['fields']['tax_id']}', '{$record['fields']['year_incorporated']}', '{$services}','{$phones}', '{$locations}', '{$contact}', '{$details}', '{$program}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

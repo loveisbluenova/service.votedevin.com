@@ -149,11 +149,22 @@
 
 								$name = str_replace("'","\'",$record['fields']['name']);
 								$organization = implode(",", $record['fields']['organization']);
+								$programs = implode(",", $record['fields']['programs']);
 								$locations = implode(",", $record['fields']['locations']);
+								$description = str_replace("'","\'",$record['fields']['description']);
 								$phones = implode(",", $record['fields']['phones']);
+								$taxonomy = implode(",", $record['fields']['taxonomy']);
+								$application_process = str_replace("'","\'",$record['fields']['application_process']);
+								$holiday_schedule = implode(",", $record['fields']['holiday_schedule']);
+								$regular_schedule = implode(",", $record['fields']['regular_schedule']);
+								$service_area = implode(",", $record['fields']['service_area']);
+								$contacts = implode(",", $record['fields']['contacts']);
+								$details = implode(",", $record['fields']['details']);
+								$metadata = implode(",", $record['fields']['metadata']);
 
-								$sql = "INSERT INTO services (service_id, name, organization, programs, locations, alternate_name, description, url, email, status, application_process, wait_time, fees, accreditations, licenses, phones, holiday_schedule, regular_schedule, taxonomy, contacts, details, service_area)
-								VALUES ( '{$record['id']}', '{$name}', '{$organization}', '{$record['fields']['programs']}', '{$locations}', '{$record['fields']['alternate_name']}', '{$record['fields']['description']}', '{$record['fields']['url']}', '{$record['fields']['email']}', '{$record['fields']['status']}', '{$record['fields']['application_process']}', '{$record['fields']['wait_time']}', '{$record['fields']['fees']}', '{$record['fields']['accreditations']}', '{$record['fields']['licenses']}', '{$phones}', '{$record['fields']['holiday_schedule']}', '{$record['fields']['regular_schedule']}', '{$record['fields']['taxonomy']}', '{$record['fields']['contacts']}', '{$record['fields']['details']}', '{$record['fields']['service_area']}');";
+
+								$sql = "INSERT INTO services (service_id, name, organization, programs, locations, alternate_name, description, url, email, status, taxonomy,  application_process, wait_time, fees, accreditations, licenses, phones, holiday_schedule, regular_schedule, contacts, details, service_area, metadata)
+								VALUES ( '{$record['id']}', '{$name}', '{$organization}', '{$programs}', '{$locations}', '{$record['fields']['alternate_name']}', '{$description}', '{$record['fields']['url']}', '{$record['fields']['email']}', '{$record['fields']['status']}', '{$taxonomy}', '{$application_process}', '{$record['fields']['wait_time']}', '{$record['fields']['fees']}', '{$record['fields']['accreditations']}', '{$record['fields']['licenses']}', '{$phones}', '{$holiday_schedule}', '{$regular_schedule}', '{$contacts}', '{$details}', '{$service_area}', '{$metadata}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

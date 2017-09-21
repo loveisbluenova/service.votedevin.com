@@ -7547,10 +7547,39 @@ label{
 }
 
 p{
-  color: #222222;
   font-size: 18px;
+  line-height: inherit;
+}
+
+body{
+  color: #333;
 }
 
 .btn-default {
   text-transform: none;
+}
+
+.badge-green, .label-green {
+    background-color: #44c789 !important;
+    font-weight: 900;
+    font-size: 12px !important;
+}
+
+a{
+  color: #4c92d7;
+}
+
+.badge-yellow, .label-yellow {
+    font-size: 12px !important;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #357ca5;
+}
+
+.dropdown-menu li a {
+  white-space: normal;
 }

@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
     <link type="text/css" rel="stylesheet" href="styles/jquery-ui-1.10.4.custom.min.css">
     <link type="text/css" rel="stylesheet" href="styles/font-awesome.min.css">
-     <link type="text/css" rel="stylesheet" href="styles/simple-line-icons.css">
+    <link type="text/css" rel="stylesheet" href="styles/simple-line-icons.css">
     <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="styles/animate.css">
     <link type="text/css" rel="stylesheet" href="styles/main.css">

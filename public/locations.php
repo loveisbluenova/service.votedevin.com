@@ -150,11 +150,18 @@
 								$name = str_replace("'","\'",$record['fields']['name']);
 								$organization = implode(",", $record['fields']['organization']);
 								$alternate_name = str_replace("'","\'",$record['fields']['alternate_name']);
+								$transportation = str_replace("'","\'",$record['fields']['transportation']);
+								$description = str_replace("'","\'",$record['fields']['description']);
 								$services = implode(",", $record['fields']['services']);
 								$phones = implode(",", $record['fields']['phones']);
+								$details = implode(",", $record['fields']['details']);
+								$holiday_schedule = implode(",", $record['fields']['holiday_schedule']);
+								$regular_schedule = implode(",", $record['fields']['regular_schedule']);
+								$address = implode(",", $record['fields']['address']);
+								$accessibility_for_disabilities = implode(",", $record['fields']['accessibility_for_disabilities']);
 
 								$sql = "INSERT INTO locations (location_id, name, organization, alternate_name, transportation, latitude, longitude, description, services, phones, details, holiday_schedule, regular_schedule, address, accessibility_for_disabilities)
-								VALUES ( '{$record['id']}', '{$name}', '{$organization}','{$alternate_name}', '{$record['fields']['transportation']}', '{$record['fields']['latitude']}', '{$record['fields']['longitude']}', '{$record['fields']['description']}', '{$services}', '{$phones}', '{$record['fields']['details']}', '{$record['fields']['holiday_schedule']}', '{$record['fields']['regular_schedule']}', '{$record['fields']['address']}', '{$record['fields']['accessibility_for_disabilities']}');";
+								VALUES ( '{$record['id']}', '{$name}', '{$organization}','{$alternate_name}', '{$transportation}', '{$record['fields']['latitude']}', '{$record['fields']['longitude']}', '{$description}', '{$services}', '{$phones}', '{$details}', '{$holiday_schedule}', '{$regular_schedule}', '{$address}', '{$accessibility_for_disabilities}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
