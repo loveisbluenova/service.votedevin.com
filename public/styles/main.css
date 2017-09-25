@@ -7583,3 +7583,7 @@ h2 {
 .dropdown-menu li a {
   white-space: normal;
 }
+
+.note code, .note .highlight {
+    background-color: #e6e6e6;
+}

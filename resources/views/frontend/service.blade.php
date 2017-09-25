@@ -48,7 +48,7 @@
 
                         <div class="page-content">
                             <div class="row">
-                                <div class="col-lg-7" style="padding-right: 0;">
+                                <div class="col-lg-8" style="padding-right: 0;">
                                     <div class="panel" style="padding-top: 20px;">
                                         <div class="panel-body">
                                             <p style="font-size: 25px;color: #357ca5;">{{$service->name}}</p>
@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-5" style="padding-left: 0;">
+                                <div class="col-lg-4" style="padding-left: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
                                             @if ($service_map->latitude==0 && $service_map->longitude==0)

@@ -40,7 +40,10 @@ class ServiceController extends Controller
         $organization_name = '&nbsp;';
         $service_type_name = '&nbsp;';
         $filter = collect([$service_type_name, $location_name, $organization_name, $service_name]);
-        return view('frontend.taxonomy', compact('services','locations','organizations', 'taxonomys','service_name','filter'));
+
+        $services_all = DB::table('services')->leftjoin('phones', 'services.phones', 'like', DB::raw("concat('%', phones.phone_id, '%')"))->select('services.*', DB::raw('group_concat(phones.phone_number) as phone_numbers'))->groupBy('services.id')->leftjoin('organizations', 'services.organization', '=', 'organizations.organization_id')->leftjoin('taxonomies', 'services.taxonomy', '=', 'taxonomies.taxonomy_id')->select('services.*', DB::raw('group_concat(phones.phone_number) as phone_numbers'), DB::raw('organizations.name as organization_name'), DB::raw('taxonomies.name as taxonomy_name'))->get();
+
+        return view('frontend.taxonomy', compact('services','locations','organizations', 'taxonomys','service_name','filter','services_all'));
     }
 
     /**

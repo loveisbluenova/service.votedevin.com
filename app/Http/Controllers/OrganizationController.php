@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
+
 use App\Logic\User\UserRepository;
 use App\Models\Post;
 use App\Models\Taxonomy;
@@ -35,7 +37,7 @@ class OrganizationController extends Controller
         $service_name = '&nbsp;';
         $filter = collect([$service_type_name, $location_name, $organization_name, $service_name]);
 
-        return view('frontend.organization', compact('services','locations','organizations', 'taxonomys','filter'));
+        return view('frontend.organizations', compact('services','locations','organizations', 'taxonomys','filter'));
     }
 
     /**
@@ -53,9 +55,13 @@ class OrganizationController extends Controller
         $service_type_name = '&nbsp;';
         $location_name = '&nbsp;';
         $organization_name = '&nbsp;';
-        $service_name = Service::where('service_id','=', $id)->value('name');
+        $organization_name = Organization::where('organization_id','=', $id)->value('name');
+        $service_name = '&nbsp;';
         $filter = collect([$service_type_name, $location_name, $organization_name, $service_name]);
-        return view('frontend.service', compact('services','locations','organizations', 'taxonomys','service_name','service','organization','filter'));
+
+        $organization_services = Organization::where('organization_id','=', $id)->leftjoin('services', 'organizations.services', 'like', DB::raw("concat('%', services.service_id, '%')"))->select('services.*')->leftjoin('phones', 'services.phones', 'like', DB::raw("concat('%', phones.phone_id, '%')"))->select('services.*', DB::raw('group_concat(phones.phone_number) as phone_numbers'))->groupBy('services.id')->get();
+
+        return view('frontend.organization', compact('services','locations','organizations', 'taxonomys','service_name','service','organization','filter','organization_services'));
     }
 
     /**

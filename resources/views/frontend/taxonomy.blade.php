@@ -20,7 +20,7 @@
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
                     <div class="page-title">
-                        Home</div>
+                        All Services</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
@@ -81,7 +81,7 @@
                                                 <div class="box text-shadow">
                                                     <table class="demo-tbl">
                                                         <!--<item>1</item>-->
-                                                        @foreach($services as $service)
+                                                        @foreach($services_all as $service)
                                                         <tr class="tbl-item">
                                                             
                                                             <!--<data></data>-->
@@ -89,19 +89,18 @@
 
                                                                 <p class="title" style="font-size: 25px;"><a href="/service_{{$service->service_id}}" style="color: #357ca5;">{{$service->name}}</a></p>
 
-                                                                <p class="desc" style="font-size: 16px;"><a href="#" style="color: #00aff0;">service->organization</a></p>
+                                                                <p class="desc" style="font-size: 16px;"><a href="organization_" style="color: #00aff0;">{{$service->organization_name}}</a></p>
 
                                                                 <div class="option" style="padding-left: 10px;padding-top: 5px;">
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>service->taxonomy</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$service->taxonomy_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>service->phone</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$service->phone_numbers}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px;">service->description</p>
+                                                                    <p class="desc" style="font-size: 16px;">{!! $service->description !!}</p>
                                                                 </div>
                                                             </td>
-                                                            <!--<img/>-->
-                                                            <td class="td-block"><img src="images/thumbs/arch-1.jpg" alt="" title="" /></td>
+                                                        
                                                         </tr>
                                                         @endforeach
                                                     </table>
