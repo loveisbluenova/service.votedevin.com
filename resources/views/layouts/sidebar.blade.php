@@ -9,9 +9,9 @@
             <button type="button" class="btn btn-default" style="width: 88%;">{{$filter[0]}}</button>
             <button type="button" data-toggle="dropdown" data-delay="1000" data-close-others="true" class="btn btn-primary dropdown-toggle"><i class="fa fa-angle-down"></i></button>
             <ul class="dropdown-menu scrollable-menu">
-                <li><a href="/taxonomy/all">All</a></li>
+                <li><a href="/taxonomy_all">All</a></li>
                 @foreach($taxonomys as $taxonomy)
-                <li><a href="/taxonomy/{{$taxonomy->taxonomy_id}}">{{$taxonomy->name}}</a></li>
+                <li><a href="/taxonomy_{{$taxonomy->taxonomy_id}}">{{$taxonomy->name}}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -21,9 +21,9 @@
             <button type="button" class="btn btn-default" style="width: 88%;">{{$filter[1]}}</button>
             <button type="button" data-toggle="dropdown" data-delay="1000" data-close-others="true" class="btn btn-primary dropdown-toggle"><i class="fa fa-angle-down"></i></button>
             <ul class="dropdown-menu scrollable-menu">
-                <li><a href="/location/all">All</a></li>
+                <li><a href="/location_all">All</a></li>
                 @foreach($locations as $location)
-                <li><a href="/location/{{$location->location_id}}">{{$location->name}}</a></li>
+                <li><a href="/location_{{$location->location_id}}">{{$location->name}}</a></li>
                 @endforeach
             </ul>
         </div>

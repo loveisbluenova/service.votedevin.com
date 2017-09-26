@@ -52,12 +52,14 @@
 
                                     <div class="panel">
                                         <div class="panel-body">
-                                            <div class="note note-info"><h4 class="box-heading" style="font-size: 25px;">{{$organization->name}}</h4>
+                                            <div class="note note-info"><h4 class="box-heading" style="font-size: 25px;">{{$location->name}}</h4>
 
-                                            <p><code> Alternate Name:</code> {{$organization->alternate_name}}</p>
-                                            <p><code> Description:</code> {!! $organization->description !!}</p>
-                                            <p><code> Email:</code> {{$organization->email}}</p>
-                                            <p><code> Url:</code> {{$organization->url}}</p>
+                                            <p><code> Organizations:</code> {{$location->organization_name}}</p>
+                                            <p><code> Services:</code> {{$location->service_name}}</p>
+                                            <p><code> Alternate Name:</code> {{$location->alternate_name}}</p>
+                                            <p><code> Description:</code> {!! $location->description !!}</p>
+                                            
+                                            <p><code> Transportation:</code> {{$location->transportation}}</p>
 
                                             </div>
                                             <div id="grid-layout-table-1" class="box jplist">
@@ -92,23 +94,23 @@
                                                 <div class="box text-shadow">
                                                     <table class="demo-tbl">
                                                         <!--<item>1</item>-->
-                                                       @foreach($organization_services as $organization_service)
+                                                       @foreach($location_services as $location_service)
                                                         <tr class="tbl-item">
                                                             
                                                             <!--<data></data>-->
                                                             <td class="td-block">
 
-                                                                <p class="title" style="font-size: 25px;"><a href="/service_{{$organization_service->service_id}}" style="color: #357ca5;">{{$organization_service->name}}</a></p>
+                                                                <p class="title" style="font-size: 25px;"><a href="/service_{{$location_service->service_id}}" style="color: #357ca5;">{{$location_service->name}}</a></p>
 
                                                                 <p class="desc" style="font-size: 16px;"><a href="#" style="color: #00aff0;"></a></p>
 
                                                                 <div class="option" style="padding-left: 10px;padding-top: 5px;">
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$organization_service->taxonomy_name}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$location_service->taxonomy_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$organization_service->phone_numbers}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$location_service->phone_numbers}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px;">{!! $organization_service->description !!}</p>
+                                                                    <p class="desc" style="font-size: 16px;">{!! $location_service->description !!}</p>
                                                                 </div>
                                                             </td>
                                                             <!--<img/>-->

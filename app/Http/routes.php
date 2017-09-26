@@ -72,6 +72,9 @@ Route::get('/organization_{id}', 'OrganizationController@find');
 Route::get('/location_all', 'LocationController@all');
 Route::get('/location_{id}', 'LocationController@find');
 
+Route::get('/taxonomy_all', 'TaxonomyController@all');
+Route::get('/taxonomy_{id}', 'TaxonomyController@find');
+
 
 // CUSTOM REDIRECTS
 Route::get('restart', function () {
