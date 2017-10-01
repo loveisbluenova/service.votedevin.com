@@ -151,7 +151,9 @@
 								$organization = implode(",", $record['fields']['organization']);
 								$programs = implode(",", $record['fields']['programs']);
 								$locations = implode(",", $record['fields']['locations']);
+								$alternate_name = str_replace("'","\'",$record['fields']['alternate_name']);
 								$description = str_replace("'","\'",$record['fields']['description']);
+								$url = str_replace("'","\'",$record['fields']['url']);
 								$phones = implode(",", $record['fields']['phones']);
 								$taxonomy = implode(",", $record['fields']['taxonomy']);
 								$application_process = str_replace("'","\'",$record['fields']['application_process']);
@@ -164,7 +166,7 @@
 
 
 								$sql = "INSERT INTO services (service_id, name, organization, programs, locations, alternate_name, description, url, email, status, taxonomy,  application_process, wait_time, fees, accreditations, licenses, phones, holiday_schedule, regular_schedule, contacts, details, service_area, metadata)
-								VALUES ( '{$record['id']}', '{$name}', '{$organization}', '{$programs}', '{$locations}', '{$record['fields']['alternate_name']}', '{$description}', '{$record['fields']['url']}', '{$record['fields']['email']}', '{$record['fields']['status']}', '{$taxonomy}', '{$application_process}', '{$record['fields']['wait_time']}', '{$record['fields']['fees']}', '{$record['fields']['accreditations']}', '{$record['fields']['licenses']}', '{$phones}', '{$holiday_schedule}', '{$regular_schedule}', '{$contacts}', '{$details}', '{$service_area}', '{$metadata}');";
+								VALUES ( '{$record['id']}', '{$name}', '{$organization}', '{$programs}', '{$locations}', '{$alternate_name}', '{$description}', '{$url}', '{$record['fields']['email']}', '{$record['fields']['status']}', '{$taxonomy}', '{$application_process}', '{$record['fields']['wait_time']}', '{$record['fields']['fees']}', '{$record['fields']['accreditations']}', '{$record['fields']['licenses']}', '{$phones}', '{$holiday_schedule}', '{$regular_schedule}', '{$contacts}', '{$details}', '{$service_area}', '{$metadata}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

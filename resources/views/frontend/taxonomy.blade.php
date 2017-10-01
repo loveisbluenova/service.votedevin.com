@@ -2,11 +2,12 @@
 <title>Index | Index</title>
 
 <div>
+
     <!--BEGIN BACK TO TOP-->
     <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
     <!--END BACK TO TOP-->
     <!--BEGIN TOPBAR-->
-    @include('layouts.header')
+     @include('layouts.header')
     <!--END TOPBAR-->
     <div id="wrapper">
         <!--BEGIN SIDEBAR MENU-->
@@ -20,8 +21,9 @@
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
                     <div class="page-title">
-                        All Services</div>
+                        Taxonomy</div>
                 </div>
+                <div class="sharethis-inline-share-buttons col-md-4"></div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                     <li class="hidden"><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
@@ -46,9 +48,13 @@
 
                         <div class="page-content">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-8" style="padding-right: 0;">
+
                                     <div class="panel">
                                         <div class="panel-body">
+                                            <div class="note note-info">
+                                                <h4 class="box-heading" style="font-size: 25px;">{{$taxonomy->name}}</h4>
+                                            </div>
                                             <div id="grid-layout-table-1" class="box jplist">
                                                 <div class="jplist-ios-button"><i class="fa fa-sort"></i>jPList Actions</div>
                                                 <div class="jplist-panel box panel-top">
@@ -81,26 +87,28 @@
                                                 <div class="box text-shadow">
                                                     <table class="demo-tbl">
                                                         <!--<item>1</item>-->
-                                                        @foreach($services_all as $service)
+                                                       @foreach($taxonomy_services as $taxonomy_service)
                                                         <tr class="tbl-item">
                                                             
                                                             <!--<data></data>-->
                                                             <td class="td-block">
 
-                                                                <p class="title" style="font-size: 25px;"><a href="/service_{{$service->service_id}}" style="color: #357ca5;">{{$service->name}}</a></p>
+                                                                <p class="title" style="font-size: 25px;"><a href="/service_{{$taxonomy_service->service_id}}" style="color: #357ca5;">{{$taxonomy_service->name}}</a></p>
 
-                                                                <p class="desc" style="font-size: 16px;"><a href="organization_" style="color: #00aff0;">{{$service->organization_name}}</a></p>
+                                                                <p class="desc" style="font-size: 16px;"><a href="#" style="color: #00aff0;"></a></p>
 
                                                                 <div class="option" style="padding-left: 10px;padding-top: 5px;">
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$service->taxonomy_name}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"></i>{{$taxonomy_service->organization_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$service->phone_numbers}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$taxonomy_service->taxonomy_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px;">{!! $service->description !!}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$taxonomy_service->phone_numbers}}</p>
+
+                                                                    <p class="desc" style="font-size: 16px;">{!! $taxonomy_service->description !!}</p>
                                                                 </div>
                                                             </td>
-                                                        
+                                                            <!--<img/>-->
                                                         </tr>
                                                         @endforeach
                                                     </table>
@@ -139,6 +147,24 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-4" style="padding-left: 0;">
+                                    <div class="portlet box">
+                                        <div class="portlet-header">
+                                            
+                                        </div>
+                                        <div class="portlet-body">
+                                            <p><code>Address:</code></p>
+                                            <p><code>Contact:</code></p>
+                                            <p><code>Regular schedule:</code></p>
+                                            <p><code>holiday schedule:</code></p>
+                                            <h2>Details</h2>
+                                            
+                                                <p><span class="badge badge-yellow"></span> </p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -149,12 +175,23 @@
             <!--BEGIN FOOTER-->
             <div id="footer">
                 <div class="copyright">
-                    <a href="#">&copy; ThemesGround 2015. Designed by ThemesGround </a></div>
+                <a href="#">&copy; ThemesGround 2015. Designed by ThemesGround </a></div>
             </div>
             <!--END FOOTER-->
         </div>
         <!--END CONTENT-->
-    </div>
-    <!--END PAGE WRAPPER-->
+
+</div>
+<!--END PAGE WRAPPER-->
+</div>
 </div>
 @include('layouts.script')
+<script>
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(51.5, -0.2), zoom: 10
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+</script>

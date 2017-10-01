@@ -61,7 +61,7 @@
 
                                             <p><code> Status:</code><span class="badge badge-green">{{$service->status}}</span></p>
 
-                                            <p><code> Taxonomy:</code>{{$taxonomy}}</p>
+                                            <p><code> Service Taxonomy:</code><a href="/taxonomy_{{$taxonomy->taxonomy_id}}" style="color: #428bca;">{{$taxonomy->name}}</a></p>
 
                                             <p><code> Url:</code><a target="blank" href="{{$service->url}}">{{$service->url}}</a></p>
 

@@ -147,12 +147,13 @@
 								echo $record['fields']['value'] . '</a>';
 								echo '</li>';
 
+								$value = str_replace("'","\'",$record['fields']['value']);
 								$locations = implode(",", $record['fields']['locations']);
 								$organizations = implode(",", $record['fields']['organizations']);
 								$services = implode(",", $record['fields']['services']);
 
 								$sql = "INSERT INTO details (detail_id, value, detail_type, organizations, locations, services)
-								VALUES ( '{$record['id']}', '{$record['fields']['value']}', '{$record['fields']['detail type']}', '{$organizations}', '{$locations}', '{$services}');";
+								VALUES ( '{$record['id']}', '{$value}', '{$record['fields']['detail type']}', '{$organizations}', '{$locations}', '{$services}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

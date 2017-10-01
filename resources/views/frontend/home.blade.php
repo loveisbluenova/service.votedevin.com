@@ -65,7 +65,7 @@
                                                     <ul id="tree1">
                                                         @foreach($taxonomies as $taxonomy)
                                                             <li>
-                                                                {{ $taxonomy->name }}
+                                                                <a href="taxonomy_{{$taxonomy->taxonomy_id}}">{{$taxonomy->name}}</a>
                                                                 @if(count($taxonomy->childs))
                                                                     @include('layouts.manageChild',['childs' => $taxonomy->childs])
                                                                 @endif
