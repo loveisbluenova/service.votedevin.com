@@ -30,7 +30,7 @@
 
         <div class="btn-group" style="margin-bottom: 40px; width: 100%;">
             <label class="col-md-12 control-label" style="padding-left: 0;">Organization</label>
-            <button type="button" class="btn btn-default" style="width: 88%;">{{$filter[2]}}</button>
+            <button type="button" class="btn btn-default" style="width: 88%;overflow: hidden;">{{$filter[2]}}</button>
             <button type="button" data-toggle="dropdown" data-delay="1000" data-close-others="true" class="btn btn-primary dropdown-toggle"><i class="fa fa-angle-down"></i></button>
             <ul class="dropdown-menu scrollable-menu">
                 <li><a href="/organization_all">All</a></li>

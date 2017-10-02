@@ -99,13 +99,13 @@
 
                                                                 <div class="option" style="padding-left: 10px;padding-top: 5px;">
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"></i>{{$taxonomy_service->organization_name}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><a href="organization_{{$taxonomy_service->organization_id}}" style="color: #00aff0;">{{$taxonomy_service->organization_name}}</a></p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$taxonomy_service->taxonomy_name}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$taxonomy->name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$taxonomy_service->phone_numbers}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{!! $taxonomy_service->phone_numbers !!}</p>
 
-                                                                    <p class="desc" style="font-size: 16px;">{!! $taxonomy_service->description !!}</p>
+                                                                    <p class="desc" style="font-size: 16px;"><code>Description</code>{!! $taxonomy_service->description !!}</p>
                                                                 </div>
                                                             </td>
                                                             <!--<img/>-->
