@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Index | Index</title>
+<title>{{$organization->name}} | Organization</title>
 
 <div>
 
@@ -106,7 +106,7 @@
 
                                                                     <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$organization_service->taxonomy_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$organization_service->phone_numbers}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{!! $organization_service->phone_numbers !!}</p>
 
                                                                     <p class="desc" style="font-size: 16px;">{!! $organization_service->description !!}</p>
                                                                 </div>
@@ -159,12 +159,17 @@
                                         <div class="portlet-body">
                                             <p><code>Address:</code></p>
                                             <p><code>Contact:</code></p>
-                                            <p><code>Regular schedule:</code></p>
-                                            <p><code>holiday schedule:</code></p>
-                                            <h2>Details</h2>
+                                            <p><code>Phones:</code></p>
+                                            
+                                            <h2>Organization Details</h2>
                                             
                                                 <p><span class="badge badge-yellow"></span> </p>
-                                            
+                                            <p><code>Legal Status:</code></p>
+                                            <p><code>Tax Status:</code></p>
+                                            <p><code>Tax ID:</code></p>
+                                            <p><code>Year Incorporated:</code></p>
+                                            <p><code>holiday schedule:</code></p>
+                                            <p><span class="badge badge-yellow">detail type</span> </p>
                                         </div>
                                     </div>
                                 </div>

@@ -44,7 +44,11 @@ Route::get('/organization', [
     'uses' 		=> 'OrganizationController@all'
 ]);
 
-Route::get('/taxonomy', [
+Route::get('/category', [
+    'uses' 		=> 'TaxonomyController@all'
+]);
+
+Route::get('/location', [
     'uses' 		=> 'TaxonomyController@all'
 ]);
 
@@ -72,8 +76,8 @@ Route::get('/organization_{id}', 'OrganizationController@find');
 Route::get('/location_all', 'LocationController@all');
 Route::get('/location_{id}', 'LocationController@find');
 
-Route::get('/taxonomy_all', 'TaxonomyController@all');
-Route::get('/taxonomy_{id}', 'TaxonomyController@find');
+Route::get('/category_all', 'TaxonomyController@all');
+Route::get('/category_{id}', 'TaxonomyController@find');
 
 
 // CUSTOM REDIRECTS

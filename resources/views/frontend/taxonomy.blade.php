@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Index | Index</title>
+<title>{{$taxonomy->name}} | Taxonomy</title>
 
 <div>
 
@@ -21,7 +21,7 @@
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
                     <div class="page-title">
-                        Taxonomy</div>
+                        Category</div>
                 </div>
                 <div class="sharethis-inline-share-buttons col-md-4"></div>
                 <ol class="breadcrumb page-breadcrumb pull-right">

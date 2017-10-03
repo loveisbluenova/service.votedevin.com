@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Index | Index</title>
+<title>{{$service->name}} | Service</title>
 
 <div>
 
@@ -61,9 +61,9 @@
 
                                             <p><code> Status:</code><span class="badge badge-green">{{$service->status}}</span></p>
 
-                                            <p><code> Service Taxonomy:</code><a href="/taxonomy_{{$taxonomy->taxonomy_id}}" style="color: #428bca;">{{$taxonomy->name}}</a></p>
+                                            <p><code> Category:</code><a href="/category_{{$taxonomy->taxonomy_id}}" style="color: #428bca;">{{$taxonomy->name}}</a></p>
 
-                                            <p><code> Url:</code><a target="blank" href="{{$service->url}}">{{$service->url}}</a></p>
+                                            <p><code> Url:</code>{!! $service->url !!}</a></p>
 
                                             <p><code> Email:</code>{{$service->email}}</p>
 

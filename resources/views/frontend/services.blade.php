@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Index | Index</title>
+<title>All Services</title>
 
 <div>
     <!--BEGIN BACK TO TOP-->
@@ -95,7 +95,7 @@
 
                                                                     <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$service->taxonomy_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$service->phone_numbers}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{!! $service->phone_numbers !!}</p>
 
                                                                     <p class="desc" style="font-size: 16px;">{!! $service->description !!}</p>
                                                                 </div>

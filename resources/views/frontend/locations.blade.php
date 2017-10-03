@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Locations | services.votedevin.com</title>
+<title>All Locations</title>
 
 <div>
     <!--BEGIN BACK TO TOP-->
@@ -95,7 +95,7 @@
 
                                                                     <p class="desc" style="font-size: 16px; color: #000;"><code>Oranizations:</code> {{$location_all->organization_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><code>Services:</code>  {{$location_all->service_name}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><code>Category:</code>  {{$location_all->service_name}}</p>
 
                                                                     <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-phone-square"></i> {{$location_all->phone_numbers}}</p>
 

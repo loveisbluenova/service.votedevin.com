@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Index | Index</title>
+<title>{{$location->name}} | Location</title>
 
 <div>
 
@@ -21,7 +21,7 @@
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
                     <div class="page-title">
-                        Organization</div>
+                        Location</div>
                 </div>
                 <div class="sharethis-inline-share-buttons col-md-4"></div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
@@ -55,7 +55,7 @@
                                             <div class="note note-info"><h4 class="box-heading" style="font-size: 25px;">{{$location->name}}</h4>
 
                                             <p><code> Organizations:</code> {{$location->organization_name}}</p>
-                                            <p><code> Services:</code> {{$location->service_name}}</p>
+                                            <p><code> Category:</code> {{$location->service_name}}</p>
                                             <p><code> Alternate Name:</code> {{$location->alternate_name}}</p>
                                             <p><code> Description:</code> {!! $location->description !!}</p>
                                             
@@ -108,7 +108,7 @@
 
                                                                     <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-sitemap"></i>{{$location_service->taxonomy_name}}</p>
 
-                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{{$location_service->phone_numbers}}</p>
+                                                                    <p class="desc" style="font-size: 16px; color: #000;"><i class="fa fa-fw fa-phone-square"></i>{!! $location_service->phone_numbers !!}</p>
 
                                                                     <p class="desc" style="font-size: 16px;">{!! $location_service->description !!}</p>
                                                                 </div>

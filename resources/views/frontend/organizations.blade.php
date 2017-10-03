@@ -1,5 +1,5 @@
 @include('layouts.style')
-<title>Oragnization | services.votedevins.com</title>
+<title>All Oragnization</title>
 
 <div>
     <!--BEGIN BACK TO TOP-->
