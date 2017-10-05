@@ -61,11 +61,11 @@
                                         <div class="panel-body">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <h3>Service Type</h3>
+                                                    <h3>Category</h3>
                                                     <ul id="tree1">
                                                         @foreach($taxonomies as $taxonomy)
                                                             <li>
-                                                                <a href="taxonomy_{{$taxonomy->taxonomy_id}}">{{$taxonomy->name}}</a>
+                                                                <a href="category_{{$taxonomy->taxonomy_id}}">{{$taxonomy->name}}</a>
                                                                 @if(count($taxonomy->childs))
                                                                     @include('layouts.manageChild',['childs' => $taxonomy->childs])
                                                                 @endif

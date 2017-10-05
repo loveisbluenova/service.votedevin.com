@@ -7587,3 +7587,9 @@ h2 {
 .note code, .note .highlight {
     background-color: #e6e6e6;
 }
+
+#mymap {
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+}

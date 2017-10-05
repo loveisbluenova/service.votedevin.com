@@ -154,11 +154,18 @@
                                 <div class="col-lg-4" style="padding-left: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            
+                                            <div id="mymap" style="width: 100%;"></div>
                                         </div>
                                         <div class="portlet-body">
                                             <p><code>Address:</code></p>
-                                            <p><code>Contact:</code></p>
+                                          
+                                                @foreach($organization_map as $servicemap)
+                                                @if($servicemap->location_id!=null)
+                                                    <p><a href="location_{{$servicemap->location_id}}">{{$servicemap->name}}</a>: {{$servicemap->address_1}}, {{$servicemap->city}}, {{$servicemap->state_province}}, {{$servicemap->postal_code}}</p>
+                                                @endif
+                                                @endforeach
+                                          
+                                            <p><code>Contact:</code>{{$organization->contact}}</p>
                                             <p><code>Phones:</code></p>
                                             
                                             <h2>Organization Details</h2>
@@ -194,12 +201,30 @@
 </div>
 </div>
 @include('layouts.script')
-<script>
-function myMap() {
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-  };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-}
-</script>
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5XHJ6oNL9-qh0XsL0G74y1xbcxNGkSxw&callback=initMap">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
+  <script type="text/javascript">
+
+    var locations = <?php print_r(json_encode($organization_map)) ?>;
+
+    var mymap = new GMaps({
+      el: '#mymap',
+      lat: 40.712722,
+      lng: -74.006058,
+      zoom:10
+    });
+
+    $.each( locations, function( index, value ){
+        mymap.addMarker({
+          lat: value.latitude,
+          lng: value.longitude,
+          title: value.name,
+          click: function(e) {
+            alert('This is '+value.name+', from New York.');
+          }
+        });
+   });
+
+  </script>

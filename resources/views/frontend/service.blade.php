@@ -1,6 +1,7 @@
 @include('layouts.style')
 <title>{{$service->name}} | Service</title>
 
+
 <div>
 
     <!--BEGIN BACK TO TOP-->
@@ -63,7 +64,7 @@
 
                                             <p><code> Category:</code><a href="/category_{{$taxonomy->taxonomy_id}}" style="color: #428bca;">{{$taxonomy->name}}</a></p>
 
-                                            <p><code> Url:</code>{!! $service->url !!}</a></p>
+                                            <p><code> Url:</code>{!! $service->url !!}</p>
 
                                             <p><code> Email:</code>{{$service->email}}</p>
 
@@ -83,17 +84,15 @@
                                 <div class="col-lg-4" style="padding-left: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            @if ($service_map->latitude==0 && $service_map->longitude==0)
-                                              <p style="font-size: 16px; padding-right: 40px; padding-top: 60px;">There is no map data.</p>
-                                            @else
-                                            <div style="width: 100%; height: 300px;">
 
-                                              {!! Mapper::render() !!}
-                                            </div>
-                                            @endif
+                                                <div id="mymap" style="width: 100%;"></div>
+
                                         </div>
                                         <div class="portlet-body">
                                             <p><code>Address:</code></p>
+                                                @foreach($service_map as $servicemap)
+                                                    <p><a href="location_{{$servicemap->location_id}}">{{$servicemap->name}}</a>: {{$servicemap->address_1}}, {{$servicemap->city}}, {{$servicemap->state_province}}, {{$servicemap->postal_code}}</p>
+                                                @endforeach
                                             <p><code>Contact:</code>{{$contacts}}</p>
                                             <p><code>Regular schedule:</code></p>
                                             <p><code>holiday schedule:</code></p>
@@ -120,17 +119,35 @@
         </div>
         <!--END CONTENT-->
 
-</div>
+    </div>
 <!--END PAGE WRAPPER-->
 </div>
-</div>
+
 @include('layouts.script')
-<script>
-function myMap() {
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-  };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-}
-</script>
+        <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5XHJ6oNL9-qh0XsL0G74y1xbcxNGkSxw&callback=initMap">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
+  <script type="text/javascript">
+
+    var locations = <?php print_r(json_encode($service_map)) ?>;
+
+    var mymap = new GMaps({
+      el: '#mymap',
+      lat: 40.712722,
+      lng: -74.006058,
+      zoom:10
+    });
+
+    $.each( locations, function( index, value ){
+        mymap.addMarker({
+          lat: value.latitude,
+          lng: value.longitude,
+          title: value.name,
+          click: function(e) {
+            alert('This is '+value.name+', from New York.');
+          }
+        });
+   });
+
+  </script>

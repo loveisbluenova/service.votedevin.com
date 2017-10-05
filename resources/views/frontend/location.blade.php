@@ -58,8 +58,8 @@
                                             <p><code> Category:</code> {{$location->service_name}}</p>
                                             <p><code> Alternate Name:</code> {{$location->alternate_name}}</p>
                                             <p><code> Description:</code> {!! $location->description !!}</p>
-                                            
                                             <p><code> Transportation:</code> {{$location->transportation}}</p>
+                                            <p><code> Phones:</code> {{$location->phone_numbers}}</p>
 
                                             </div>
                                             <div id="grid-layout-table-1" class="box jplist">
@@ -156,14 +156,18 @@
                                 <div class="col-lg-4" style="padding-left: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            
+                                            <div id="mymap" style="width: 100%;"></div>
                                         </div>
                                         <div class="portlet-body">
-                                            <p><code>Address:</code></p>
-                                            <p><code>Contact:</code></p>
-                                            <p><code>Regular schedule:</code></p>
-                                            <p><code>holiday schedule:</code></p>
-                                            <h2>Details</h2>
+                                            <p><code>Address</code>{{$location_map->address_1}}, {{$location_map->city}}, {{$location_map->state_province}} </p>
+                                            <p style="margin-left: 20px;"><span class="badge badge-yellow">Postal code</span> {{$location_map->postal_code}}</p>
+                                            <p><code>Regular schedule</code></p>
+                                                <p style="margin-left: 20px;"><span class="badge badge-yellow">Weekday</span> {{$location_map->weekday}}</p>
+                                                <p style="margin-left: 20px;"><span class="badge badge-yellow">Opens_at</span> {{$location_map->opens_at}}</p>
+                                                <p style="margin-left: 20px;"><span class="badge badge-yellow">Closes_at</span> {{$location_map->closes_at}}</p>
+                                            <p><code>Holiday schedule</code></p>
+
+                                            
                                             
                                                 <p><span class="badge badge-yellow"></span> </p>
                                             
@@ -191,12 +195,32 @@
 </div>
 </div>
 @include('layouts.script')
-<script>
-function myMap() {
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.2), zoom: 10
-  };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-}
-</script>
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5XHJ6oNL9-qh0XsL0G74y1xbcxNGkSxw&callback=initMap">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
+  <script type="text/javascript">
+
+    var location_map = <?php print_r(json_encode($location_map)) ?>;
+    var latitude = <?php print_r(json_encode($location_map->latitude)) ?>;
+    var longitude = <?php print_r(json_encode($location_map->longitude)) ?>;
+    var name = <?php print_r(json_encode($location_map->name)) ?>;
+    var mymap = new GMaps({
+      el: '#mymap',
+      lat: latitude,
+      lng: longitude,
+      zoom:18
+    });
+
+
+        mymap.addMarker({
+          lat: latitude,
+          lng: longitude,
+          title: name,
+          click: function(e) {
+            alert('This is '+value.name+', from New York.');
+          }
+
+   });
+
+  </script>

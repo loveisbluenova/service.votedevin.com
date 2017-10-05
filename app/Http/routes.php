@@ -79,6 +79,9 @@ Route::get('/location_{id}', 'LocationController@find');
 Route::get('/category_all', 'TaxonomyController@all');
 Route::get('/category_{id}', 'TaxonomyController@find');
 
+Route::match(['get', 'post'], '/services_find', [
+    'uses'          => 'ServiceController@search'
+]);
 
 // CUSTOM REDIRECTS
 Route::get('restart', function () {

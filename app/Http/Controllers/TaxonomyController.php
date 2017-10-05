@@ -89,9 +89,11 @@ class TaxonomyController extends Controller
         $service_name = '&nbsp;';
         $filter = collect([$service_type_name, $location_name, $organization_name, $service_name]);
 
+        $taxonomy_map = DB::table('taxonomies')->where('taxonomy_id','=',$id)->leftjoin('services', 'taxonomies.services', 'like', DB::raw("concat('%', services.service_id, '%')"))->leftjoin('locations', 'services.locations', 'like', DB::raw("concat('%', locations.location_id, '%')"))->leftjoin('address', 'locations.address', 'like', DB::raw("concat('%', address.address_id, '%')"))->get();
+
         $taxonomy_services = Taxonomy::where('taxonomy_id','=', $id)->leftjoin('services', 'taxonomies.services', 'like', DB::raw("concat('%', services.service_id, '%')"))->select('services.*')->leftjoin('organizations', 'services.organization', 'like', DB::raw("concat('%', organizations.organization_id, '%')"))->leftjoin('phones', 'services.phones', 'like', DB::raw("concat('%', phones.phone_id, '%')"))->select('services.*', DB::raw('group_concat(phones.phone_number) as phone_numbers'), DB::raw('organizations.name as organization_name'), DB::raw('organizations.organization_id as organization_id'))->groupBy('services.id')->get();
 
-        return view('frontend.taxonomy', compact('services','locations','organizations', 'taxonomys','service_name','service','taxonomy','filter','taxonomy_services'));
+        return view('frontend.taxonomy', compact('services','locations','organizations', 'taxonomys','service_name','service','taxonomy','filter','taxonomy_services', 'taxonomy_map'));
     }
 
 }
