@@ -223,7 +223,7 @@
           lng: longitude,
           title: name,
           infoWindow: {
-              content: name
+              content: (name+',' +address_1+',' +city+','+state_province+','+postal_code)
         }
 
    });

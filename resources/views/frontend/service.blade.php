@@ -148,7 +148,7 @@
           title: value.name,
 
         infoWindow: {
-            content: value.name
+            content: (value.name+', ' +value.address_1+', ' +value.city+', '+value.state_province+', '+value.postal_code)
         }
         });
    });
