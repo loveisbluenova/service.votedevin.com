@@ -9,11 +9,11 @@
     <!--BEGIN TOPBAR-->
      @include('layouts.header')
     <!--END TOPBAR-->
-    <div id="wrapper">
+
         <!--BEGIN SIDEBAR MENU-->
         @include('layouts.menu')
         <!--END SIDEBAR MENU-->
-
+        <div id="wrapper">
         <!--BEGIN PAGE WRAPPER-->
         <div id="page-wrapper">
             @include('layouts.sidebar')
@@ -45,10 +45,12 @@
                     </div>
 
                     <div>
-
+                        <button class="cornsilk btn-blue" style="margin-top: 20px;">
+                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-cogs"></i></a>
+                        </button>
                         <div class="page-content">
                             <div class="row">
-                                <div class="col-lg-8" style="padding-right: 0;">
+                                <div class="col-lg-8" style="padding: 0;">
 
                                     <div class="panel">
                                         <div class="panel-body">
@@ -153,14 +155,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4" style="padding-left: 0;">
+                                <div class="col-lg-4" style="padding: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
                                             <div id="mymap" style="width: 100%;"></div>
                                         </div>
                                         <div class="portlet-body">
-                                            <p><code>Address</code>{{$location_map->address_1}}, {{$location_map->city}}, {{$location_map->state_province}} </p>
-                                            <p style="margin-left: 20px;"><span class="badge badge-yellow">Postal code</span> {{$location_map->postal_code}}</p>
+                                            <p><code>Address</code>{{$location_map->address_1}}, {{$location_map->city}}, {{$location_map->state_province}}, {{$location_map->postal_code}}</p>
                                             <p><code>Regular schedule</code></p>
                                                 <p style="margin-left: 20px;"><span class="badge badge-yellow">Weekday</span> {{$location_map->weekday}}</p>
                                                 <p style="margin-left: 20px;"><span class="badge badge-yellow">Opens_at</span> {{$location_map->opens_at}}</p>
@@ -205,6 +206,10 @@
     var latitude = <?php print_r(json_encode($location_map->latitude)) ?>;
     var longitude = <?php print_r(json_encode($location_map->longitude)) ?>;
     var name = <?php print_r(json_encode($location_map->name)) ?>;
+    var address_1 = <?php print_r(json_encode($location_map->address_1)) ?>;
+    var city = <?php print_r(json_encode($location_map->city)) ?>;
+    var state_province = <?php print_r(json_encode($location_map->state_province)) ?>;
+    var postal_code = <?php print_r(json_encode($location_map->postal_code)) ?>;
     var mymap = new GMaps({
       el: '#mymap',
       lat: latitude,
@@ -217,9 +222,9 @@
           lat: latitude,
           lng: longitude,
           title: name,
-          click: function(e) {
-            alert('This is '+value.name+', from New York.');
-          }
+          infoWindow: {
+              content: name
+        }
 
    });
 

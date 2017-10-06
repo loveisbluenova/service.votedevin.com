@@ -49,7 +49,7 @@ Route::get('/category', [
 ]);
 
 Route::get('/location', [
-    'uses' 		=> 'TaxonomyController@all'
+    'uses' 		=> 'LocationController@all'
 ]);
 
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS

@@ -10,11 +10,11 @@
     <!--BEGIN TOPBAR-->
      @include('layouts.header')
     <!--END TOPBAR-->
-    <div id="wrapper">
+    
         <!--BEGIN SIDEBAR MENU-->
         @include('layouts.menu')
         <!--END SIDEBAR MENU-->
-
+        <div id="wrapper">
         <!--BEGIN PAGE WRAPPER-->
         <div id="page-wrapper">
             @include('layouts.sidebar')
@@ -46,10 +46,12 @@
                     </div>
 
                     <div>
-
+                        <button class="cornsilk btn-blue" style="margin-top: 20px;">
+                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-cogs"></i></a>
+                        </button>
                         <div class="page-content">
                             <div class="row">
-                                <div class="col-lg-8" style="padding-right: 0;">
+                                <div class="col-lg-8" style="padding: 0;">
                                     <div class="panel" style="padding-top: 20px;">
                                         <div class="panel-body">
                                             <p style="font-size: 25px;color: #357ca5;">{{$service->name}}</p>
@@ -81,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4" style="padding-left: 0;">
+                                <div class="col-lg-4" style="padding: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
 
@@ -144,9 +146,10 @@
           lat: value.latitude,
           lng: value.longitude,
           title: value.name,
-          click: function(e) {
-            alert('This is '+value.name+', from New York.');
-          }
+
+        infoWindow: {
+            content: value.name
+        }
         });
    });
 

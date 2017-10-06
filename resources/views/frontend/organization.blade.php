@@ -9,11 +9,11 @@
     <!--BEGIN TOPBAR-->
      @include('layouts.header')
     <!--END TOPBAR-->
-    <div id="wrapper">
+    
         <!--BEGIN SIDEBAR MENU-->
         @include('layouts.menu')
         <!--END SIDEBAR MENU-->
-
+        <div id="wrapper">
         <!--BEGIN PAGE WRAPPER-->
         <div id="page-wrapper">
             @include('layouts.sidebar')
@@ -45,10 +45,12 @@
                     </div>
 
                     <div>
-
+                        <button class="cornsilk btn-blue" style="margin-top: 20px;">
+                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-cogs"></i></a>
+                        </button>
                         <div class="page-content">
                             <div class="row">
-                                <div class="col-lg-8" style="padding-right: 0;">
+                                <div class="col-lg-8" style="padding: 0;">
 
                                     <div class="panel">
                                         <div class="panel-body">
@@ -151,7 +153,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4" style="padding-left: 0;">
+                                <div class="col-lg-4" style="padding: 0;">
                                     <div class="portlet box">
                                         <div class="portlet-header">
                                             <div id="mymap" style="width: 100%;"></div>
@@ -165,12 +167,12 @@
                                                 @endif
                                                 @endforeach
                                           
-                                            <p><code>Contact:</code>{{$organization->contact}}</p>
+                                            <p><code>Contact:</code>{{$organization->contact_name}}</p>
                                             <p><code>Phones:</code></p>
                                             
                                             <h2>Organization Details</h2>
                                             
-                                                <p><span class="badge badge-yellow"></span> </p>
+                                            <p><span class="badge badge-yellow"></span> </p>
                                             <p><code>Legal Status:</code></p>
                                             <p><code>Tax Status:</code></p>
                                             <p><code>Tax ID:</code></p>
@@ -221,9 +223,9 @@
           lat: value.latitude,
           lng: value.longitude,
           title: value.name,
-          click: function(e) {
-            alert('This is '+value.name+', from New York.');
-          }
+          infoWindow: {
+              content: value.name
+            }
         });
    });
 

@@ -1,12 +1,12 @@
 
-<div id="sidebar1" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"data-position="right" class="navbar-default navbar-static-side1">
-    <div class="sidebar-collapse menu-scroll">
-        <form action="/services_find" method="POST" class="hidden-sm hidden-xs" style="padding-bottom: 30px;">
+<div id="sidebar-wrapper" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"data-position="right" class="navbar-default navbar-static-side1">
+   
+        <form action="/services_find" method="POST" class="hidden-sm hidden-xs" style="display: block !important; padding-bottom: 30px;padding: 5px; ">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="input-icon right text-white"><a href=""><i class="fa fa-search"></i></a><input type="text" placeholder="Search here..." class="form-control text-black" name="find"/></div>
         </form>
 
-        <div class="btn-group" style="margin-bottom: 40px; width: 100%;">
+     <!--   <div class="btn-group" style="margin-bottom: 40px; width: 100%;">
             <label class="col-md-12 control-label" style="padding-left: 0;">Category</label>
             <button type="button" class="btn btn-default" style="width: 88%;overflow: hidden;">{{$filter[0]}}</button>
             <button type="button" data-toggle="dropdown" data-delay="1000" data-close-others="true" class="btn btn-primary dropdown-toggle"><i class="fa fa-angle-down"></i></button>
@@ -28,10 +28,10 @@
                 <li><a href="/location_{{$location->location_id}}">{{$location->name}}</a></li>
                 @endforeach
             </ul>
-        </div>
+        </div>-->
 
-        <div class="btn-group" style="margin-bottom: 40px; width: 100%;">
-            <label class="col-md-12 control-label" style="padding-left: 0;">Organization</label>
+        <div class="btn-group" style="margin-top: 40px;margin-bottom: 40px; width: 100%;padding: 5px; ">
+            <label class="col-md-12 control-label" style="padding-left: 5px;">Organization</label>
             <button type="button" class="btn btn-default" style="width: 88%;overflow: hidden;">{{$filter[2]}}</button>
             <button type="button" data-toggle="dropdown" data-delay="1000" data-close-others="true" class="btn btn-primary dropdown-toggle"><i class="fa fa-angle-down"></i></button>
             <ul class="dropdown-menu scrollable-menu">
@@ -42,8 +42,8 @@
             </ul>
         </div>
 
-        <div class="btn-group" style="margin-bottom: 40px; width: 100%;">
-            <label class="col-md-12 control-label" style="padding-left: 0;">Service</label>
+        <div class="btn-group" style="margin-bottom: 40px; width: 100%;padding: 5px; ">
+            <label class="col-md-12 control-label" style="padding-left: 5px;">Service</label>
             <button type="button" class="btn btn-default" style="width: 88%;overflow: hidden;">{{$filter[3]}}</button>
             <button type="button" data-toggle="dropdown" data-delay="1000" data-close-others="true" class="btn btn-primary dropdown-toggle"><i class="fa fa-angle-down"></i></button>
             <ul class="dropdown-menu scrollable-menu">
@@ -53,5 +53,6 @@
                 @endforeach
             </ul>
         </div>
-    </div>
+
+
 </div>

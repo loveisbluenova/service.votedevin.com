@@ -7416,7 +7416,7 @@ ul.chats li.out .message {
 .profile .icon-settings { margin-right:5px} 
 
 .task-item {margin-top:15px; overflow:hidden; display:block}
-#sidebar1 {
+#left {
     background: #f0f2f6;
     padding-top: 0px;
     border-right: 1px solid #c1d1dc;
@@ -7434,10 +7434,10 @@ ul.chats li.out .message {
     padding: 20px 20px 20px 260px;
   }
   .page-title-breadcrumb{
-    padding-left: 280px;
+
   }
   .page-content {
-    padding: 20px 20px 20px 280px;
+    padding: 20px 20px 20px 20px;
   }
   #footer {
     padding-left: 280px;
@@ -7592,4 +7592,13 @@ h2 {
     width: 800px;
     height: 500px;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+}
+
+#topbar .navbar-header #logo {
+    height: inherit !important;
+}
+@media (max-width: 767px){
+#page-wrapper {
+    margin-top: 0px !important;
+}
 }

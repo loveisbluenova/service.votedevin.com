@@ -8,11 +8,11 @@
     <!--BEGIN TOPBAR-->
     @include('layouts.header')
     <!--END TOPBAR-->
-    <div id="wrapper">
+
         <!--BEGIN SIDEBAR MENU-->
         @include('layouts.menu')
         <!--END SIDEBAR MENU-->
-
+        <div id="wrapper">
         <!--BEGIN PAGE WRAPPER-->
         <div id="page-wrapper">
             @include('layouts.sidebar')
@@ -43,7 +43,9 @@
                     </div>
 
                     <div>
-
+                        <button class="cornsilk btn-blue" style="margin-top: 20px;">
+                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-cogs"></i></a>
+                        </button>
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-lg-12">
