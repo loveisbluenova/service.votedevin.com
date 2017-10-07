@@ -45,9 +45,9 @@
                     </div>
 
                     <div>
-                        <button class="cornsilk btn-blue" style="margin-top: 20px;">
-                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-cogs"></i></a>
-                        </button>
+                    <button class="cornsilk btn-blue" style="margin-top: 20px;">
+                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle" style="padding: 0px;font-size: 25px;"><i class="fa  fa-search" style="font-size: 25px;color: #333;"></i></a>
+                    </button>
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-lg-8" style="padding: 0;">
@@ -210,7 +210,7 @@
             lng: value.longitude,
             title: value.name,
             infoWindow: {
-            content: (value.name+', ' +value.address_1+', ' +value.city+', '+value.state_province+', '+value.postal_code)
+            content: (value.name+'</br>' +value.address_1+', ' +value.city+', '+value.state_province+', '+value.postal_code)
             }
         });
    });

@@ -45,9 +45,9 @@
                     </div>
 
                     <div>
-                        <button class="cornsilk btn-blue" style="margin-top: 20px;">
-                            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-cogs"></i></a>
-                        </button>
+                    <button class="cornsilk btn-blue" style="margin-top: 20px;">
+                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle" style="padding: 0px;font-size: 25px;color: #333;"><i class="fa  fa-search" style="font-size: 25px;"></i></a>
+                    </button>
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-lg-8" style="padding: 0;">
@@ -223,7 +223,7 @@
           lng: longitude,
           title: name,
           infoWindow: {
-              content: (name+',' +address_1+',' +city+','+state_province+','+postal_code)
+              content: (name+'</br>' +address_1+', ' +city+', '+state_province+', '+postal_code)
         }
 
    });

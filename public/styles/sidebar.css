@@ -12,14 +12,14 @@ td, th {
         background: #337ab7;
         display: inline-block;
         white-space: nowrap;
-        width: 50px;
+        width: 250px;
         transition: width 1s ;
         height: 100vh;
     }
 
 .right {
         background: #fff;
-        width: calc(100% - 50px);
+        width: calc(100% - 250px);
         transition: width 1s;
         border-style:solid;
         border-color:#ccc;
