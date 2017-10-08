@@ -9,23 +9,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Logic\User\UserRepository;
-use App\Models\Post;
+use App\Models\About;
 use Validator;
 use Input;
 use Response;
 
-class PostsController extends Controller
+class AboutsController extends Controller
 {
     /**
      * Post Repository
      *
      * @var Post
      */
-    protected $post;
+    protected $about;
 
-    public function __construct(Post $post)
+    public function __construct(About $about)
     {
-        $this->post = $post;
+        $this->about = $about;
     }
 
     /**
@@ -35,7 +35,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = $this->post->first();
+        $about = $this->about->first();
         $user                   = \Auth::user();
         $users              = \DB::table('users')->get();
         $total_users        = \DB::table('users')->count();
@@ -56,14 +56,14 @@ class PostsController extends Controller
             $access = 'Administrator';
         }
 
-             return view('admin.pages.edit-home', [
+             return view('admin.pages.edit-about', [
             'users'             => $users,
             'total_users'       => $total_users,
             'user'              => $user,
             'access'            => $access,
             'success' => '', 
             'errors' => '', 
-            'message' => '',], compact('post'));
+            'message' => '',], compact('about'));
     }
 
     /**
@@ -83,7 +83,7 @@ class PostsController extends Controller
      */
     public function store()
     {
-        $post = $this->post->first();
+        $about = $this->about->first();
     	$user               = \Auth::user();
         $users              = \DB::table('users')->get();
         $total_users        = \DB::table('users')->count();
@@ -105,32 +105,32 @@ class PostsController extends Controller
         }
 
         $input = Input::all();
-        $validation = Validator::make($input, Post::$rules);
+        $validation = Validator::make($input, About::$rules);
 
         if ($validation->passes())
         {	
-        	$post = $this->post->first();
-            $post->update($input);
+        	$about = $this->about->first();
+            $about->update($input);
             //$this->post->create($input);
 
-            return view('admin.pages.edit-home', [
+            return view('admin.pages.edit-about', [
 	            'users'             => $users,
 	            'total_users'       => $total_users,
 	            'user'              => $user,
 	            'access'            => $access,
 	            'success' 			=> 'true', 
 	            'errors' 			=> '', 
-	            'message' 			=> 'Post created successfully.',], compact('post'));
+	            'message' 			=> 'Post created successfully.',], compact('about'));
         }
 
-        return view('admin.pages.edit-home', [
+        return view('admin.pages.edit-about', [
 	            'users'             => $users,
 	            'total_users'       => $total_users,
 	            'user'              => $user,
 	            'access'            => $access,
 	            'success' => 'false', 
 	            'errors' => $validation, 
-	            'message' => 'All fields are required.',], compact('post'));
+	            'message' => 'All fields are required.',], compact('about'));
     }
 
     /**
@@ -174,12 +174,12 @@ class PostsController extends Controller
     {
     	$id = 1;
         $input = array_except(Input::all(), '_method');
-        $validation = Validator::make($input, Post::$rules);
+        $validation = Validator::make($input, About::$rules);
 
         if ($validation->passes())
         {
-            $post = Post::find($id);
-            $post->update($input);
+            $about = About::find($id);
+            $about->update($input);
 
             return Response::json(array('success' => true, 'errors' => '', 'message' => 'Post updated successfully.'));
         }

@@ -53,30 +53,12 @@
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="panel income">
-                                        <div class="panel-body">
-                                            <h4>{{$posts->title}}</h4>
-                                            {!! $posts->body !!}
-                                        </div>                                                                  
-                                    </div>
+                                    
                                     <div class="panel">
                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h3>Category</h3>
-                                                    <ul id="tree1">
-                                                        @foreach($taxonomies as $taxonomy)
-                                                            <li>
-                                                                <a href="category_{{$taxonomy->taxonomy_id}}">{{$taxonomy->name}}</a>
-                                                                @if(count($taxonomy->childs))
-                                                                    @include('layouts.manageChild',['childs' => $taxonomy->childs])
-                                                                @endif
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>                            
-                                        </div>
+                                            <h4>{{$abouts->title}}</h4>
+                                            {!! $abouts->body !!}
+                                        </div>                                                                  
                                     </div>
                                 </div>
                             </div>

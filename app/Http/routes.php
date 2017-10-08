@@ -79,6 +79,8 @@ Route::get('/location_{id}', 'LocationController@find');
 Route::get('/category_all', 'TaxonomyController@all');
 Route::get('/category_{id}', 'TaxonomyController@find');
 
+
+
 Route::match(['get', 'post'], '/services_find', [
     'uses'          => 'ServiceController@search'
 ]);
@@ -117,6 +119,8 @@ Route::get('admin', function () {
     return redirect('/dashboard');
 });
 Route::get('home',['uses'=>'IndexController@index']);
+
+Route::get('about',['uses'=>'IndexController@about']);
 
 // USER PAGE ROUTES - RUNNING THROUGH AUTH MIDDLEWARE
 Route::group(['middleware' => 'auth'], function () {
@@ -183,15 +187,21 @@ Route::group(['middleware' => 'administrator'], function () {
 		'uses' 			=> 'PostsController@index'
 	]);
 
+	Route::get('/about_edit', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'AboutsController@index'
+	]);
+
 	Route::get('/datasync', [
 		'as' 			=> '{username}',
 		'uses' 			=> 'UserController@datasync'
 	]);
 
-		// upload image route for MediumInsert plugin
-	Route::any('upload', 'PostsController@upload');
+
 	// resource routes for posts
 	Route::resource('posts', 'PostsController');
+
+	Route::resource('abouts', 'AboutsController');
 
 });
 

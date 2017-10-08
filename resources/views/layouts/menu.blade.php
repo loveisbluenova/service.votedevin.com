@@ -26,8 +26,11 @@
                     </i>Locations</a>
                        
                     </li>
-
-
+                    <li><a href="/about"><i class="fa  fa-info-circle">
+                        
+                    </i>About</a>
+                       
+                    </li>
                 </ul>
             </div>
         </nav>

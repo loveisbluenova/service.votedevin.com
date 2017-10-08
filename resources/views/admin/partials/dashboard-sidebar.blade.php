@@ -18,7 +18,7 @@
         </div>
 
         {{-- SIDEBAR SEARCH FORM --}}
-        @include('admin.forms.sidebar-search')
+       
 
         {{-- SIDEBAR NAVIGATION: style sidebar.less --}}
         <ul class="sidebar-menu">
@@ -36,6 +36,13 @@
                 <i class="fa fa-pencil"></i> <span>Home Edit</span>
               </a>
             </li>
+
+            <li>
+              <a href="/abouts">
+                <i class="fa  fa-info-circle"></i> <span>About Edit</span>
+              </a>
+            </li>
+
             <li>
               <a href="/datasync">
                 <i class="fa fa-database"></i> <span>Data Sync</span>

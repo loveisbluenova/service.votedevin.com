@@ -41,7 +41,7 @@
                         {{$message}}                
                     </div>
                 @endif
-                {{ Form::open(array('route' => 'posts.store')) }}
+                {{ Form::open(array('route' => 'abouts.store')) }}
                     {{ csrf_field() }}
                     <div class="box-body">
                      <!--   <div class="form-group">
@@ -50,19 +50,19 @@
 
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input class="form-control" placeholder="Title" name="title" type="text" id="title" value="{{$post->title}}">
+                            <input class="form-control" placeholder="Title" name="title" type="text" id="title" value="{{$about->title}}">
                         </div>
 
                         <div class="form-group">
                             <label for="body">Content</label>
-                            <textarea class="form-control" placeholder="Content" id="summernote" name="body" cols="50" rows="10" style="display: none;">{!! $post->body !!}</textarea>
+                            <textarea class="form-control" placeholder="Content" id="summernote" name="body" cols="50" rows="10" style="display: none;">{!! $about->body !!}</textarea>
                            <!-- {{Form::label('body', 'Content')}}{{Form::textarea('body',null,array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'summernote'))}}--> 
                         </div>
                         <div class="form-group">
-                            {{Form::submit('Publish Post',array('class' => 'btn btn-primary btn-sm'))}} </div>
+                            {{Form::submit('Publish About',array('class' => 'btn btn-primary btn-sm'))}} </div>
                         {{Form::close()}}
                         <script>
-                            var content = <?php print_r(json_encode($post->body)) ?>;
+                            var content = <?php print_r(json_encode($about->body)) ?>;
                             $('#summernote').summernote({
                                 tabsize: 2,
                                 height: 300

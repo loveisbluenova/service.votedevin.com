@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Logic\User\UserRepository;
+use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use App\Models\About;
 use App\Models\Taxonomy;
 use App\Models\Service;
 use App\Models\Location;
@@ -25,10 +27,12 @@ class IndexController extends Controller
      */
     protected $post;
 
+
     public function __construct(Post $post)
     {
         $this->post = $post;
     }
+
 
     public function index()
     {
@@ -56,9 +60,24 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function about()
+
     {
-        //
+        $services = Service::all();
+        $locations = Location::all();
+        $taxonomys = Taxonomy::all();
+        $organizations = Organization::all();
+        $taxonomies = Taxonomy::where('parent_name', '=', '')->get();
+        $allTaxonomies = Taxonomy::pluck('name','taxonomy_id')->all();
+        // return $tree;
+        //return view('files.treeview',compact('tree'));
+        $abouts = DB::table('abouts')->first();
+        $service_name = '&nbsp;';
+        $location_name = '&nbsp;';
+        $organization_name = '&nbsp;';
+        $service_type_name = '&nbsp;';
+        $filter = collect([$service_type_name, $location_name, $organization_name, $service_name]);
+        return view('frontend.about', compact('abouts','taxonomies','allTaxonomies','services','locations','organizations', 'taxonomys','filter'));
     }
 
     /**
