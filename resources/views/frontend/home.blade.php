@@ -86,6 +86,7 @@
                     
                 </div>
             </div>
+
             <!--BEGIN FOOTER-->
             <div id="footer">
                 <div class="copyright">
@@ -99,3 +100,4 @@
 </div>
 @include('layouts.script')
 <script src="../js/treeview.js"></script>
+<!-- start feedwind code --> <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="49498/"></script> <!-- end feedwind code -->
